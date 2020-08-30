@@ -17,4 +17,13 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         return view('book/edit', compact('book'));
     }
+
+    public function update(Request $request, $id) {
+        $book = Book::findOrFail($id);
+        $book->name = $request->name;
+        $book->price = $request->price;
+        $book->author = $request->author;
+        $book->save();
+        return redirect("/book");
+    }
 }
