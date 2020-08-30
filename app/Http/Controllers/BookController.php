@@ -26,4 +26,10 @@ class BookController extends Controller
         $book->save();
         return redirect("/book");
     }
+
+    public function destroy($id) {
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return redirect("/book");
+    }
 }
