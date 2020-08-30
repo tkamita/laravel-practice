@@ -32,4 +32,18 @@ class BookController extends Controller
         $book->delete();
         return redirect("/book");
     }
+
+    public function create() {
+        $book = new Book();
+        return view('book/create', compact('book'));
+    }
+
+    public function store(Request $request) {
+        $book = new Book();
+        $book->name = $request->name;
+        $book->price = $request->price;
+        $book->author = $request->author;
+        $book->save();
+        return redirect("/book");
+    }
 }
